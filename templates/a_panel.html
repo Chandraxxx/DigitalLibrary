@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Panel Admin</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://use.fontawesome.com/28f669008e.js"></script>	
+</head>
+<body>
+	<!-- Grey with black text -->
+		<nav class="navbar navbar-expand-sm bg-light navbar-light">
+			<div class="container">
+			  <ul class="navbar-nav ml-auto">
+			    <li class="nav-item active navbar-text">
+			      <a class="nav-link navbar-text" href="{{url_for('panel_Admin')}}">Home</a>
+			    </li>
+			    <li class="nav-item navbar-text">
+			      <a class="nav-link" href="{{url_for('users')}}">Users</a>
+			    </li>
+			    <li class="nav-item navbar-text">
+			      <a class="nav-link" href="{{url_for('aboutMe')}}">About</a>
+			    </li>
+			    <li class="nav-item navbar-text">
+			      <a class="nav-link" href="{{url_for('logOut')}}">Logout</a>
+			    </li>
+			  </ul>
+			</div>
+		</nav>
+
+		<!-- Content -->
+		<div class="container my-3">
+				<div class="panel panel-default border border-light shadow-sm">
+				  <div class="panel-heading bg-light p-3">
+				  	
+				  		<div class="row">
+				  			<div class="col-6">
+				  				Daftar Files Terunggah
+				  			</div>
+				  			<div class="col-6 text-right">
+				  				<button class="btn btn-sm btn-success" data-toggle="modal" data-target="#addbukuModal">
+				  					<i class="text-light fa fa-plus-square-o" aria-hidden="true" data-toggle="tooltip" title="tambah" ></i>
+				  				</button>
+				  			</div>
+				  		</div>
+				  	
+					</div>
+				  <div class="panel-body p-3" style="height: 450px;overflow-y: scroll;">
+				  	<table class="table">
+					    <thead>
+					      <tr>
+					        <th>No</th>
+					        <th>Nama Files</th>
+					        <th>Host Downloader</th>
+
+					        <th>Tanggal Upload</th>
+					        <th>Kendali</th>
+					      </tr>
+					    </thead>
+					    <tbody>
+					    	{%for file in container%}
+
+					      <tr>
+					        <td>{{file.idF}}</td>				
+					        <td>{{file.nameF}}</td>
+					        <td>{{file.hostF}}</td>
+
+					        <td>{{file.datesF}}</td>
+					      
+					        <td>
+					        	<a href="{{file.linkF}}" target="_blank" class="btn-sm btn-secondary rounded mr-1 p-2" data-toggle="tooltip" title="downloads"><i class="fa fa-arrow-circle-o-down" aria-hidden="true"></i>
+
+					        	<a href="http://localhost:5000/del_File/{{file.idF}}" class="btn-sm btn-danger rounded ml-1 p-2"><i class="text-light fa fa-trash-o" aria-hidden="true" data-toggle="tooltip" title="delete"></i></button>
+					        </td>
+					      </tr>
+					      	{%endfor%}
+					    </tbody>
+					  </table>
+				  </div>
+				</div>
+			</div>
+	<!-- End content -->
+
+	<!-- Modals for add buku -->
+	<!-- The Modal -->
+	<!-- Modal -->
+<div class="modal fade" id="addbukuModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Files</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <form action="" method="POST">
+	      <div class="modal-body">
+	        <div class="container">
+	        	<div class="row">
+	        		<div class="col-4 form-text">No</div>
+	        		<div class="col-8">
+	        			<input type="text" name="idF" class="form-control-sm" required="">
+	        		</div>
+	        	</div>
+	        	<div class="row my-2">
+	        		<div class="col-4 form-text">Nama Files</div>
+	        		<div class="col-8">
+	        			<input type="text" name="namaF" class="form-control-sm" required="">
+	        		</div>
+	        	</div>
+	        	<div class="row my-2">
+	        		<div class="col-4 form-text">Host Downloader</div>
+	        		<div class="col-8">
+	        			<div class="input-group-sm ">		
+						  <select class="custom-select" id="inputGroupSelect01" name="hostF">
+						    <option selected>Silahkan diPilih</option>
+						    <option value="Mega.nz">Mega.nz</option>
+						    <option value="Google Drive">Google Drive</option>
+						    <option value="RapidGator">RapidGator</option>
+						  </select>
+						</div>
+	        		</div>
+	        	</div>	        
+	        	<div class="row my-2">
+	        		<div class="col-4 form-text">Link Download</div>
+	        		<div class="col-8">
+	        			<input type="text" name="linkF" class="form-control-sm" required="">
+	        		</div>
+	        	</div>
+	        	
+	        	
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup Panel</button>
+	        <input type="submit" value="Submit" class="btn btn-primary">
+	      </div>
+      </form>
+    </div>
+  </div>
+</div>
+	<!-- end of modals -->
+		<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script>
+	$(document).ready(function(){
+	  $('[data-toggle="tooltip"]').tooltip();
+	});
+
+	$('#myModal').on('shown.bs.modal', function () {
+	  $('#myInput').trigger('focus')
+	})
+	</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login - Admin</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+	
+</head>
+<body>
+	<!-- Grey with black text -->
+		<nav class="navbar navbar-expand-sm bg-light justify-content-center">
+			  <p class="navbar-text font-weight-bold text-danger">admin Panel - Authorized Only</p>	
+		</nav>
+
+		<!-- Content -->
+		 <div class=" p-3 mb-4">
+		  <div class="d-flex align-items-center justify-content-center" style="height: 400px">
+		    <div class="p-2  col-example border-dark">
+		    	<form action="" method="POST">
+		    		<div class="container border-dark border rounded p-4">
+		    			<div class="row">
+		    				<div class="col form-text text-center h5">
+		    					Login
+		    				</div>
+		    			</div>	
+		    			<hr class="my-3">
+		    			<div class="row">
+		    				<div class="col-4 form-text">
+		    					UserID :
+		    				</div>
+		    				<div class="col-8">
+		    					<input type="text" name="uid" class="form-control" required="">
+		    				</div>
+		    			</div>
+		    			<div class="row my-2">
+		    				<div class="col-4 form-text">
+		    					Password :
+		    				</div>
+		    				<div class="col-8">
+		    					<input type="Password" name="pw" class="form-control" required="">
+		    				</div>
+		    			</div>
+		    			{%if msg == True%}
+		    			<div class="alert alert-danger text-center">
+		    				Invalid Username or Password
+		    			</div>
+		    			{%endif%}
+		    			{%if msg2 == True%}
+		    			<div class="alert alert-danger text-center">
+		    				Username Not Exists
+		    			</div>
+		    			{%endif%}
+		    			<hr class="my-3">
+		    			<div class="row my-2 mx-5">
+		    				<button class="form-control btn-outline-primary rounded" value="submit">Login</button>
+		    			</div>
+		    		</div>
+		    	</form>
+		    </div>
+		  </div>
+
+		</div>
+
+		<!-- Endof Content -->
+
+
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

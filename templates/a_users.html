@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Panel Admin - Users</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://use.fontawesome.com/28f669008e.js"></script>	
+
+	
+</head>
+<body>
+	<!-- Grey with black text -->
+		<nav class="navbar navbar-expand-sm bg-light navbar-light">
+			<div class="container">
+			  <ul class="navbar-nav ml-auto">
+			    <li class="nav-item active navbar-text">
+			      <a class="nav-link navbar-text" href="{{url_for('panel_Admin')}}">Home</a>
+			    </li>
+			    <li class="nav-item navbar-text">
+			      <a class="nav-link" href="{{url_for('users')}}">Users</a>
+			    </li>
+			    <li class="nav-item navbar-text">
+			      <a class="nav-link" href="{{url_for('aboutMe')}}">About</a>
+			    </li>
+			    <li class="nav-item navbar-text">
+			      <a class="nav-link" href="{{url_for('logOut')}}">Logout</a>
+			    </li>
+			  </ul>
+			</div>
+		</nav>
+	<!-- Content -->
+		<div class="container my-3">
+			<div class="panel panel-default border border-light shadow-sm">
+			  <div class="panel-heading bg-light p-3">
+			  	
+			  		<div class="row">
+			  			<div class="col-6">
+			  				Pengguna
+			  			</div>
+			  			<div class="col-6 text-right">
+			  				<a href="{{url_for('add_Users')}}" class="btn btn-sm btn-success"><i class="text-light fa fa-plus-square-o" aria-hidden="true" data-toggle="tooltip" title="tambah"></i></a>
+			  			</div>
+			  		</div>
+			  	
+				</div>
+			  <div class="panel-body p-3" style="height: 450px;overflow-y: scroll;">
+			  	<table class="table">
+				    <thead>
+				      <tr>
+				        <th>No</th>
+				        <th>Usernames</th>
+				        <th>Levels</th>
+				        <th>Actions</th>
+				      </tr>
+				    </thead>
+				    <tbody>
+				    	{%for user in container%}
+				      <tr>
+				        <td>{{user.id}}</td>				
+				        <td>{{user.name}}</td>
+				        <td>{{user.level}}</td>
+				        <td>
+				        	
+				        	<a href="http://localhost:5000/edit_User/{{user.id}}" class="btn-sm btn-secondary rounded mr-1 p-2 px-2" data-toggle="tooltip"title="Edit">
+				        		<i class="text-light fa fa-pencil-square-o" aria-hidden="true"></i>
+				        	</a>			   
+					        <a href="http://localhost:5000/del_User/{{user.id}}" class="p-2 px-2 ml-1 btn-sm btn-danger rounded " data-toggle="tooltip" title="Delete">
+					        	<i class="text-light fa fa-trash-o" aria-hidden="true"></i>
+					        </a>
+				        </td>
+				      </tr>
+				      	{%endfor%}
+				      
+				    </tbody>
+				  </table>
+			  </div>
+			</div>
+		</div>
+	<!-- End content -->
+
+
+
+			<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+	<script>
+	$(document).ready(function(){
+	  $('[data-toggle="tooltip"]').tooltip();
+	});
+	</script>
+</body>
+</html>

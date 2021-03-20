@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>editUsers - Admin</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+	
+</head>
+<body>
+	<!-- Grey with black text -->
+		<nav class="navbar navbar-expand-sm bg-light justify-content-center">
+			  <p class="navbar-text font-weight-bold text-danger">admin Panel - Authorized Only</p>	
+		</nav>
+
+		<!-- Content -->
+		 <div class=" p-3 mt-5 mb-4">
+		  <div class="d-flex align-items-center justify-content-center" style="height: 400px">
+		    <div class="p-2  col-example border-dark">
+		    	<form action="" method="POST">
+		    		<div class="container border-dark border rounded p-4">
+		    			<div class="row">
+		    				<div class="col form-text text-center h5">
+		    					edit Users
+		    				</div>
+		    			</div>	
+		    			<hr class="my-3">
+		    			<div class="row">
+		    				<div class="col-4 form-text">
+		    					Id:
+		    				</div>
+		    				<div class="col-8">
+		    					<input type="text" name="id" class="form-control" value="{{container.id}}" required="">
+		    				</div>
+		    			</div>
+		    			<div class="row my-2">
+		    				<div class="col-4 form-text">
+		    					Username:
+		    				</div>
+		    				<div class="col-8">
+		    					<input type="text" name="username" class="form-control" value="{{container.name}}" required="" autofocus="">
+		    				</div>
+		    			</div>
+
+		    			<div class="row my-2">
+		    				<div class="col-4 form-text">
+		    					Levels :
+		    				</div>
+		    				<div class="col-8">
+		    					{%if container.level == "Member"%}
+		    					
+		    					<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="level" id="inlineRadio1" value="Admin">
+
+								  <label class="form-check-label" for="inlineRadio1">Admin</label>
+								</div>
+								<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="level" id="inlineRadio2" value="Member"
+								  checked="checked">
+
+								  <label class="form-check-label" for="inlineRadio2">Member</label>
+								</div>
+								{%elif container.level == "Admin"%}
+								<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="level" id="inlineRadio1" value="Admin" checked="checked">
+
+								  <label class="form-check-label" for="inlineRadio1">Admin</label>
+								</div>
+								<div class="form-check form-check-inline">
+								  <input class="form-check-input" type="radio" name="level" id="inlineRadio2" value="Member"
+								  >
+
+								  <label class="form-check-label" for="inlineRadio2">Member</label>
+								</div>
+								{%endif%}
+		    				</div>
+		    			</div>
+		    			<div class="row my-2">
+		    				<div class="col-4 form-text">
+		    					Password :
+		    				</div>
+		    				<div class="col-8">
+		    					<input type="Password" name="password" class="form-control" value="{{container.password}}" required="">
+		    				</div>
+		    			</div>
+
+		    			{%if msg == True%}
+		    			<div class="alert alert-danger text-center">
+		    				Username already exist, Please change.
+		    			</div>
+		    			{%endif%}
+		    			<hr class="my-3">
+		    			<div class="row my-2 mx-5">
+		    				<button class="form-control btn-outline-primary rounded" value="submit">Save Edit</button>
+		    			</div>
+		    		</div>
+		    	</form>
+		    </div>
+		  </div>
+
+		</div>
+
+		<!-- Endof Content -->
+
+
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<!-- Popper JS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
